@@ -148,4 +148,21 @@ public class MyDodo extends Dodo
             turn(-90);
         }
     }
+    
+        public boolean grainAhead(){
+            boolean status = false;
+        if (canMove()){
+            move(1);
+            if(isTouching(Grain.class)){
+                status = true;
+            }
+            else {
+                status = false;
+            }
+            turn(180);
+            move(1);
+            turn(180);
+        }
+        return status;
+    }
 }
