@@ -165,4 +165,10 @@ public class MyDodo extends Dodo
         }
         return status;
     }
+    
+    public void gotoEgg() {
+        while (! onEgg()){
+            move(1);
+        }
+    }
 }
