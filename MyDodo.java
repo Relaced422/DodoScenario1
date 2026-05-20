@@ -178,4 +178,28 @@ public class MyDodo extends Dodo
         walkToWorldEdge();
         turn180();
     }
+    
+    public void walkToWorldEdgeClimbingOverFences() {
+        while (!borderAhead()) {
+            if (fenceAhead()) {
+                climbOverFence();
+            } else {
+                move();
+            }
+        }
+    }
+    
+    public void pickUpGrainsAndPrintCoordinates() {
+    if (onGrain()) {
+        System.out.println("(" + getX() + ", " + getY() + ")");
+        pickUpGrain();
+    }
+    while (!borderAhead()) {
+        move();
+        if (onGrain()) {
+            System.out.println("(" + getX() + ", " + getY() + ")");
+            pickUpGrain();
+        }
+    }
+}
 }
