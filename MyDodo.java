@@ -227,4 +227,26 @@ public class MyDodo extends Dodo
             layEgg();
         }
     }
+    
+    public void walkAroundFencedArea() {
+        while (!onEgg()) {
+            turnRight();
+            if (canMove()) {
+                move();
+            } else {
+                turnLeft();
+                if (canMove()) {
+                    move();
+                } else {
+                    turnLeft();
+                    if (canMove()) {
+                        move();
+                    } else {
+                        turnLeft();
+                        move();
+                    }
+                }
+            }
+        }
+    }
 }
