@@ -150,22 +150,15 @@ public class MyDodo extends Dodo
         }
     }
     
-        public boolean grainAhead(){
+        public boolean grainAhead() {
             boolean status = false;
-        if (canMove()){
-            move(1);
-            if(isTouching(Grain.class)){
-                status = true;
+            if (canMove()) {
+                move();
+                status = onGrain();
+                stepOneCellBackwards();
             }
-            else {
-                status = false;
-            }
-            turn(180);
-            move(1);
-            turn(180);
+            return status;
         }
-        return status;
-    }
     
     public void gotoEgg() {
         while (! onEgg()){
@@ -190,16 +183,24 @@ public class MyDodo extends Dodo
     }
     
     public void pickUpGrainsAndPrintCoordinates() {
-    if (onGrain()) {
-        System.out.println("(" + getX() + ", " + getY() + ")");
-        pickUpGrain();
-    }
-    while (!borderAhead()) {
-        move();
         if (onGrain()) {
             System.out.println("(" + getX() + ", " + getY() + ")");
             pickUpGrain();
         }
+        while (!borderAhead()) {
+            move();
+            if (onGrain()) {
+                System.out.println("(" + getX() + ", " + getY() + ")");
+                pickUpGrain();
+            }
+        }
     }
-}
+    
+    public void stepOneCellBackwards() {
+        turn180();
+        move();
+        turn180();
+    }
+    
+    
 }
