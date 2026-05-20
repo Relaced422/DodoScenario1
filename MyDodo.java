@@ -203,4 +203,28 @@ public class MyDodo extends Dodo
     }
     
     
+    public void layEggsInEmptyNests() {
+        if (onNest() && canLayEgg()) {
+            layEgg();
+        }
+        while (!borderAhead()) {
+            move();
+            if (onNest() && canLayEgg()) {
+                layEgg();
+            }
+        }
+    }
+    
+    public void walkToNestAvoidingFences() {
+        while (!onNest() && !borderAhead()) {
+            if (fenceAhead()) {
+                climbOverFence();
+            } else {
+                move();
+            }
+        }
+        if (onNest() && canLayEgg()) {
+            layEgg();
+        }
+    }
 }
