@@ -111,8 +111,11 @@ public class MyDodo extends Dodo
         }
     }
     
+    
+    
     public void turn180(){
-        turn(180);
+        turnRight();
+        turnRight();
     }
 
     /**
@@ -170,7 +173,7 @@ public class MyDodo extends Dodo
         }
     }
     
-        public void goBackToStartOfRowAndFaceBack() {
+    public void goBackToStartOfRowAndFaceBack() {
         turn180();
         walkToWorldEdge();
         turn180();
